@@ -41,45 +41,45 @@ function getItemsWithText(searchTerm){
     })
 }
 
-// getItemsWithText('fish')
+getItemsWithText('fish')
 
-function paginateProducts(pageNumber) {
-  const productsPerPage = 6
-  const offset = productsPerPage * (pageNumber - 1)
-  knexInstance
-    .select('id', 'name', 'price', 'date_added', 'checked', 'category')
-    .from('shopping_list')
-    .limit(productsPerPage)
-    .offset(offset)
-    .then(result => {
-      console.log(result)
-    })
-}
+// function paginateProducts(pageNumber) {
+//   const productsPerPage = 6
+//   const offset = productsPerPage * (pageNumber - 1)
+//   knexInstance
+//     .select('id', 'name', 'price', 'date_added', 'checked', 'category')
+//     .from('shopping_list')
+//     .limit(productsPerPage)
+//     .offset(offset)
+//     .then(result => {
+//       console.log(result)
+//     })
+// }
 
 // paginateProducts(2)
 
-function addedAfterDate(daysAgo){
-  knexInstance
-    .select('name', 'price', 'category', 'date_added')
-    .from('shopping_list')
-    .where('date_added', '>', knexInstance.raw(`now() - '?? days':: INTERVAL`, daysAgo))
-    .then(result => {
-      console.log(result)
-    })
-}
+// function addedAfterDate(daysAgo){
+//   knexInstance
+//     .select('name', 'price', 'category', 'date_added')
+//     .from('shopping_list')
+//     .where('date_added', '>', knexInstance.raw(`now() - '?? days':: INTERVAL`, daysAgo))
+//     .then(result => {
+//       console.log(result)
+//     })
+// }
 
 // addedAfterDate(30)
 
-function costPerCategory() {
-  knexInstance
-    .select('category')
-    .sum('price as total')
-    .from('shopping_list')
-    .groupBy('category')
-    .then(result => {
-      console.log('COST PER CATEGORY')
-      console.log(result)
-    })
-}
+// function costPerCategory() {
+//   knexInstance
+//     .select('category')
+//     .sum('price as total')
+//     .from('shopping_list')
+//     .groupBy('category')
+//     .then(result => {
+//       console.log('COST PER CATEGORY')
+//       console.log(result)
+//     })
+// }
 
-costPerCategory()
+// costPerCategory()
